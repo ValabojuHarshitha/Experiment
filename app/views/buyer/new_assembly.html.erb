@@ -1,0 +1,16 @@
+<% unless flash[:notice].nil? %>
+<%= flash[:notice]%>
+<% end %>
+<br/></br/>
+Enter Assembly Details: <br/>
+<%= form_for :assembly do |f|%>
+Name:<%= f.text_field :name %><br/>
+<% if !@part.empty? %>
+Select Part : <%= f.select 'part_id' ,options_for_select(@part.collect{|p| [p.name,p.id]}),
+                   {:prompt=>"Select any one"} %>
+  <% else %>
+    Select physician : <%= f.select 'part_id' ,{:prompt=>"Select any one"} %>
+  <% end %>
+                   <br/>
+<%= f.submit "save" %>
+<% end %>

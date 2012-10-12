@@ -1,0 +1,17 @@
+<% if @exp %>
+<%phy=@exp.physicians %>
+<% if phy %>
+  <% phy.each do |p| %>
+    <%= p.name %><br/>
+  <% end %>
+<% end %>
+<% end %>
+----------------------------<br/>
+<% if @exp1 %>
+<%phy=@exp1.patients %>
+<% if phy %>
+  <% phy.each do |p| %>
+    <%= p.name %><br/>
+  <% end %>
+<% end %>
+<% end %>

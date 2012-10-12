@@ -1,0 +1,16 @@
+<% unless flash[:notice].nil? %>
+<%= flash[:notice]%>
+<% end %>
+<br/></br/>
+Enter Details: <br/>
+<%= form_for :patient do |f|%>
+Name:<%= f.text_field :name %><br/>
+<% if !@phy.empty? %>
+Select physician : <%= f.select 'physician_id' ,options_for_select(@phy.collect{|p| [p.name,p.id]}),
+                   {:prompt=>"Select any one"} %>
+  <% else %>
+    Select physician : <%= f.select 'physician_id' ,{:prompt=>"Select any one"} %>
+  <% end %>
+                   <br/>
+<%= f.submit "save" %>
+<% end %>
