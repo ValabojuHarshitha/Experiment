@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121011151105) do
+ActiveRecord::Schema.define(:version => 20121017094045) do
 
   create_table "admins", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(:version => 20121011151105) do
     t.integer  "role_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "ads", :force => true do |t|
+    t.string   "name"
+    t.string   "contact"
+    t.integer  "magazine_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "appointments", :force => true do |t|
@@ -31,16 +39,16 @@ ActiveRecord::Schema.define(:version => 20121011151105) do
 
   create_table "assemblies", :force => true do |t|
     t.string   "name"
-    t.integer  "part_id"
+    t.integer  "part_id_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "assemblies_parts", :force => true do |t|
-    t.integer  "assembly_id"
-    t.integer  "part_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "assembly_id_id"
+    t.integer  "part_id_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "carts", :force => true do |t|
@@ -51,6 +59,20 @@ ActiveRecord::Schema.define(:version => 20121011151105) do
     t.string   "total"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.string   "name"
+    t.string   "who_commented"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "magazines", :force => true do |t|
+    t.string   "name"
+    t.string   "organization"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "orders", :force => true do |t|
@@ -66,9 +88,10 @@ ActiveRecord::Schema.define(:version => 20121011151105) do
 
   create_table "parts", :force => true do |t|
     t.string   "name"
-    t.integer  "assembly_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "desc"
+    t.integer  "assembly_id_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "patients", :force => true do |t|
@@ -78,12 +101,26 @@ ActiveRecord::Schema.define(:version => 20121011151105) do
     t.integer  "physician_id"
   end
 
+  create_table "photos", :force => true do |t|
+    t.string   "name"
+    t.string   "des"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "physicians", :force => true do |t|
     t.string   "name"
     t.string   "contact"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "patient_id"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "name"
+    t.string   "desc"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "products", :force => true do |t|
@@ -97,6 +134,28 @@ ActiveRecord::Schema.define(:version => 20121011151105) do
 
   create_table "roles", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "students", :force => true do |t|
+    t.string   "name"
+    t.string   "add"
+    t.integer  "teacher_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "students_teachers", :id => false, :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "teacher_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "teachers", :force => true do |t|
+    t.string   "name"
+    t.integer  "student_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

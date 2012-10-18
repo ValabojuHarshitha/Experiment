@@ -2,8 +2,6 @@
 
 one:
   name: MyString
-  part_id: 1
 
 two:
   name: MyString
-  part_id: 1

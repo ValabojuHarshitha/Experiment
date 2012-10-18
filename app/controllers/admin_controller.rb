@@ -11,7 +11,7 @@ class AdminController < ApplicationController
       end
     end
   end
-
+  
   def user_create
     @role=Role.find(:all)
     @admin=Admin.new(params[:admin])
@@ -65,6 +65,15 @@ class AdminController < ApplicationController
 
   def start_append
     
+  end
+  
+  def query
+    
+  end
+  
+  def has_test
+    @student=Student.find(1).teachers
+    @teacher=Teacher.find(5).students
   end
   
 end

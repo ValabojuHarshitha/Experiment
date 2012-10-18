@@ -1,8 +1,64 @@
 Rajesh::Application.routes.draw do
+  resources :students
+
+  resources :teachers
+
+  resources :parts
+
+  resources :assemblies
+
+  # resources :ads
+# 
+  # resources :magazines
+
+  #resources :comments
+  #assert_generates "/about", :controller => "admin", :action => "about"
+  #resources :posts
+  scope(:path_names => { :new => "neu", :edit => "bearbeiten" }) do
+     resources :products, :path => "harsha" # when u type "harsha" on the browser it redirects to products index page.
+  end
+  
+  resources :photos, :controller => "buyer/posts"  # If u mention "photos/new" on the browser ,it 'll redirect to "buyer/posts/new action"..
+  resources :photos ,:as => "images" # makes use of "images" in the named helper..like edit_image_path(:id)
+ # resources :users ,:path_names => { :new => 'make', :edit => 'change' }
+  resources :buyer do
+    get 'exp' ,:on => :collection # member won't work here,coz we dnt have particular "buyer" member like ""/buyer/1/exp""
+  end
+
+  resources :photos do 
+    member do 
+      get 'edit'
+    end
+  end
+
   resources :products
 
   resources :users
-
+  
+  # namespace :buyer do
+   # resources  :comments #:posts,
+  # end
+  # scope :module => "buyer" do
+    # resources  :comments #:posts,
+  # end
+  scope "/buyer" do
+    resources :posts, :comments
+  end
+  
+  resources :magazines do
+    resources :ads #,:as=> "mag_ad" this will create new_magazine_mag_ad_path
+  end
+  #----------------------- Non resourceful -------------------
+ # match ':admin(/:user_create)' => 'admin#user_create'
+ match 'student/:id' => 'photos#show'
+ # match 'admin/query' => 'admin#query'
+ # match 'admin/user_create' => 'admin#query' # default routing
+  match '/dis' => 'admin#query' ,:as => 'itsme', :via => [:get, :post]
+  match 'magazines/:id' => 'magazines#show', :constraints => { :id => /[^\/]+/  }
+  match '/exp' => redirect('/magazines')
+  #match ':admin(/:has_test)', :controller => /users\/[^\/]+/
+  #----------------------- Non resourceful ends-------------------
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -49,8 +105,9 @@ Rajesh::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  match 'admin/has_test' => 'admin#has_test'
   match 'admin/role_create' => 'admin#role_create'
-  match 'admin/user_create' => 'admin#user_create'
+  match '/user_create' => 'admin#user_create'
   match 'admin/signin' => 'admin#signin'
   
   match 'buyer/catalog' => 'buyer#catalog'
@@ -79,7 +136,12 @@ Rajesh::Application.routes.draw do
      #------------------- rails intermediate-----------
      match 'demo/blck' => 'demo#blck'
      match 'demo/var_mthd' => 'demo#var_mthd'
+     
      #------------------- rails intermediate-----------
+     #----------------------Experiment starts---------------------------
+     
+     #resource :geocoder
+     #----------------------Experiment ends-----------------------------
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'

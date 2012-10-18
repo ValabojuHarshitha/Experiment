@@ -1,0 +1,12 @@
+<h1>Students List</h1>
+<% if !@student.empty?%>
+ <% @student.each do |s| %>
+  Student Name :<%= s.name%> <br/></br/>
+ <% end %>
+<% end %>
+---------------------------------------------------<br/></br/>
+<% if !@teacher.empty?%>
+ <% @teacher.each do |s| %>
+  Teacher Name :<%= s.name%> <br/></br/>
+ <% end %>
+<% end %>
