@@ -1,5 +1,7 @@
+require 'foobar'
 class BuyerController < ApplicationController
   #layout "my_page" 
+  include Foobar
   
   def catalog
     @product=Product.find(:all)
@@ -113,6 +115,7 @@ class BuyerController < ApplicationController
   def exp
     @exp=Patient.find(5)
     @exp1=Physician.find(12)
+    #@x=Foobar.foobar
   end
   
   def new_assembly

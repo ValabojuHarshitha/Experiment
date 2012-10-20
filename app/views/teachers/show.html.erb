@@ -6,10 +6,27 @@
 </p>
 
 <p>
-  <b>Student:</b>
-  <%= @teacher.student_id %>
+  <b>Subject:</b>
+  <%= @teacher.subject %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @teacher.address %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @teacher.contact %>
+</p>
+
+<p>
+  <b>Organization:</b>
+  <%= @teacher.organization %>
 </p>
 
 
 <%= link_to 'Edit', edit_teacher_path(@teacher) %> |
 <%= link_to 'Back', teachers_path %>
+
+

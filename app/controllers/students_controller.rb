@@ -87,4 +87,8 @@ class StudentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def info
+    @x=params[:harsha]
+  end
 end

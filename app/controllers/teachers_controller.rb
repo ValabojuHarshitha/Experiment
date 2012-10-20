@@ -36,10 +36,10 @@ class TeachersController < ApplicationController
   # GET /teachers/1/edit
   def edit
     @teacher = Teacher.find(params[:id])
+    #@student=@teacher.student_id
   end
 
   # POST /teachers
-  
   # POST /teachers.json
   def create
     @teacher = Teacher.new(params[:teacher])

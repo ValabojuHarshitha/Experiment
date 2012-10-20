@@ -58,5 +58,10 @@ module Rajesh
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    #================== harsha added==========================
+    #config.autoload_paths += Dir["#{Rails.root}/lib"]
+    #================== harsha added==========================
+
   end
 end

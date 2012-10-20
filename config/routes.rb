@@ -1,4 +1,6 @@
 Rajesh::Application.routes.draw do
+  resources :parents
+
   resources :students
 
   resources :teachers
@@ -35,15 +37,15 @@ Rajesh::Application.routes.draw do
 
   resources :users
   
-  # namespace :buyer do
-   # resources  :comments #:posts,
-  # end
+  namespace :buyer do
+   resources  :comments ,:posts
+  end
   # scope :module => "buyer" do
     # resources  :comments #:posts,
   # end
-  scope "/buyer" do
-    resources :posts, :comments
-  end
+  # scope "/buyer" do
+    # resources :posts, :comments
+  # end
   
   resources :magazines do
     resources :ads #,:as=> "mag_ad" this will create new_magazine_mag_ad_path
@@ -51,11 +53,12 @@ Rajesh::Application.routes.draw do
   #----------------------- Non resourceful -------------------
  # match ':admin(/:user_create)' => 'admin#user_create'
  match 'student/:id' => 'photos#show'
- # match 'admin/query' => 'admin#query'
+  match 'admin/query' => 'admin#query'
  # match 'admin/user_create' => 'admin#query' # default routing
-  match '/dis' => 'admin#query' ,:as => 'itsme', :via => [:get, :post]
+  match '/dis' => 'admin#query' ,:as => 'itsme', :via => [:get]
   match 'magazines/:id' => 'magazines#show', :constraints => { :id => /[^\/]+/  }
   match '/exp' => redirect('/magazines')
+  #get ':controller/:action/:id/:user_id'
   #match ':admin(/:has_test)', :controller => /users\/[^\/]+/
   #----------------------- Non resourceful ends-------------------
   
@@ -150,5 +153,5 @@ Rajesh::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  #match ':controller(/:action)(.:format)'
 end

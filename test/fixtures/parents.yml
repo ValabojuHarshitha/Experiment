@@ -2,14 +2,14 @@
 
 one:
   name: MyString
-  subject: MyString
   address: MyString
   contact: MyString
-  organization: MyString
+  occupation: MyString
+  exp: MyString
 
 two:
   name: MyString
-  subject: MyString
   address: MyString
   contact: MyString
-  organization: MyString
+  occupation: MyString
+  exp: MyString

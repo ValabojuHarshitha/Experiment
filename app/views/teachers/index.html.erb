@@ -3,7 +3,10 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Student</th>
+    <th>Subject</th>
+    <th>Address</th>
+    <th>Contact</th>
+    <th>Organization</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +15,10 @@
 <% @teachers.each do |teacher| %>
   <tr>
     <td><%= teacher.name %></td>
-    <td><%= teacher.student_id %></td>
+    <td><%= teacher.subject %></td>
+    <td><%= teacher.address %></td>
+    <td><%= teacher.contact %></td>
+    <td><%= teacher.organization %></td>
     <td><%= link_to 'Show', teacher %></td>
     <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
     <td><%= link_to 'Destroy', teacher, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
@@ -23,3 +29,5 @@
 <br />
 
 <%= link_to 'New Teacher', new_teacher_path %>
+
+

@@ -68,7 +68,7 @@ class AdminController < ApplicationController
   end
   
   def query
-    
+    @x=params[:id]
   end
   
   def has_test
@@ -76,4 +76,7 @@ class AdminController < ApplicationController
     @teacher=Teacher.find(5).students
   end
   
+  def new
+    
+  end
 end
